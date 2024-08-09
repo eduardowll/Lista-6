@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+/*
+Elabore um algoritmo que
+- Crie a estrutura tAnimal: Registro tAnimal:
+	nome: string
+	raca: string
+	idade: int
+- Declare um vetor Animais (50 posições de tAnimal) e cadastre 8 animais;
+- Verifique e escreva o nome do animal mais velho;
+- Pergunte ao usuário se deseja consultar os animais cadastrados solicitando uma raça para
+a busca. Se ele quiser, leia uma raça e, se existir animal da raça procurada, informe seus
+dados (nome e idade); 
+*/
+
+struct animal{
+	string nome;
+	string raca;
+	int idade;
+};
+
+int main(){
+	
+	int const tam = 50, tam2 = 8;
+	animal Animal[tam];
+	string procurar, nomevelho;
+	bool achou = false;
+	int idadevelha;
+	
+	for(int i = 0; i < tam2; i++){
+		cout << "\n\tDigite os dados do animal " << i + 1;
+		cout << "\n\tNome: ";
+		getline(cin, Animal[i].nome);
+		cout << "\tRaca: ";
+		getline(cin, Animal[i].raca);
+		cout << "\tIdade: ";
+		cin >> Animal[i].idade;
+		getchar();
+		if(i == 0)
+			idadevelha = Animal[i].idade;
+		if(Animal[i].idade > idadevelha){
+			idadevelha = Animal[i].idade;
+			nomevelho = Animal[i].nome;
+		}
+	}
+
+	do{
+		cout << "\n\tDigite uma raca para ser procurada ou \"sair\": ";
+		getline(cin, procurar);
+		if(procurar != "sair"){
+			for(int i = 0; i < tam2; i++){
+				if(procurar == Animal[i].raca){
+					cout << "\tNome: " << Animal[i].nome;
+					cout << "\n\tIdade: " << Animal[i].idade;
+					achou = true;
+				}
+				if(!achou)
+					cout << "\n\tRaca nao encontrada";
+			}
+			cout << "\n\tNome do animal mais velho: " << nomevelho;
+		}else{
+			cout << "\n\tPrograma Finalizado!";	
+		}
+	}while(procurar != "sair");
+}
