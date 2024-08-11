@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+/*
+Altere o exercício anterior para cadastrar no máximo 20 clientes. Ao final do cadastro de cada
+cliente deverá ser perguntado: "Novo Cliente (S/N)?". Caso o usuário escolha “N” ou chegar
+nos 20 clientes, o programa deve mostrar um relatório de todos os clientes cadastrados e
+finalizar. OBS: Deve-se utilizar um vetor de registros na solução.
+*/
+
+struct Clientes{
+	int cpf;
+	string nome;
+	string endereco;
+	int telefone;
+};
+
+int main(){
+	const int tam = 3;
+	int i = 0, i3 = 0;
+	char continuar;
+	Clientes vclientes[tam];
+	
+	do{
+		cout << "\n\tPreenchimento de dados dos clientes " << i + 1 << " (o maximo de cliente e " << tam << "): ";
+		cout << "\n\tCPF: ";
+		cin >> vclientes[i].cpf;
+		getchar();
+		cout << "\tNome: ";
+		getline(cin, vclientes[i].nome);
+		cout << "\tEndereco: ";
+		getline(cin, vclientes[i].endereco);
+		cout << "\tTelefone: ";
+		cin >> vclientes[i].telefone;
+		cout << "\tNovo cliente(S/N)?: ";
+		cin >> continuar;
+		i++;
+		i3++;	
+	}while((!((continuar == 'N')||(continuar == 'n'))&&(i != tam)));
+	cout << "\n\tRelatorio dos clientes";
+	for(int i2 = 0; i2 < i3; i2++){
+		cout << "\n\tDados do cliente " << i2 + 1 << ": " << vclientes[i2].cpf << ", "<< vclientes[i2].nome << ", " <<
+		vclientes[i2].endereco << ", " << vclientes[i2].telefone;
+	}
+}
