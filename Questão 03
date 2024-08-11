@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+/*
+Escreva um programa para cadastrar dois clientes de uma loja. As informações necessárias
+para o cliente são: identidade, nome, endereço e telefone. OBS: Deve ser usada uma
+estrutura de registro para a construção deste cadastro.
+*/
+
+struct Clientes{
+	int cpf;
+	string nome;
+	string endereco;
+	int telefone;
+};
+
+int main(){
+	const int tam = 2;
+	Clientes vclientes[tam];
+	
+	for(int i = 0; i < tam; i++){
+		cout << "\n\tPreenchimento de dados do cliente " << i + 1 << ": ";
+		cout << "\n\tCPF: ";
+		cin >> vclientes[i].cpf;
+		getchar();
+		cout << "\tNome: ";
+		getline(cin, vclientes[i].nome);
+		cout << "\tEndereco: ";
+		getline(cin, vclientes[i].endereco);
+		cout << "\tTelefone: ";
+		cin >> vclientes[i].telefone;	
+	}
+	
+	for(int i = 0; i < tam; i++){
+		cout << "\n\tDados do cliente " << i + 1 << ": " << vclientes[i].cpf << ", "<< vclientes[i].nome << ", " <<
+		vclientes[i].endereco << ", " << vclientes[i].telefone;
+	}
+}
